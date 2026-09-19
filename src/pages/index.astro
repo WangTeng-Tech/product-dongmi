@@ -1,0 +1,619 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  ShieldCheck, 
+  Layers, 
+  Cpu, 
+  FileCheck, 
+  Search, 
+  ArrowRight, 
+  Lock, 
+  Database, 
+  Eye, 
+  CheckCircle2, 
+  Building2,
+  PhoneCall,
+  Menu,
+  X,
+  Activity,
+  AlertTriangle,
+  Fingerprint
+} from 'lucide-astro';
+
+// PageBudget:
+//   summary_cards: 4
+//   charts:        0
+//   tables:        0
+//   forms:         1
+
+const TRACKS = [
+  {
+    name: "管理事实轨",
+    role: "听其言",
+    desc: "全自动结构化解析经营管理团队提报的述职报告、高管会议纪要及战略承诺，精准抽取可量化、可验证的事实依据与时间表。",
+    items: ["经营汇报与述职纪要文本挖掘", "关键绩效承诺事实抽取", "经营风险点与统计口径变动追踪"],
+    color: "border-blue-500/40 text-blue-400"
+  },
+  {
+    name: "系统底座轨",
+    role: "观其行",
+    desc: "基于留痕式双签授权通道，直接穿透接入用友与金蝶 ERP、销售管道及底层生产数据库的只读客观数据，杜绝人工汇报层层美化。",
+    items: ["财务真实收支与回款穿透", "客户商机转化漏斗核验", "真实库存与供应链周转校准"],
+    color: "border-emerald-500/40 text-emerald-400"
+  },
+  {
+    name: "决策精算轨",
+    role: "衡其效",
+    desc: "在客观系统数据之上，调动行业精算逻辑与规则引擎构建基线，全天候挖掘隐匿的经营偏差、利润漏损与资源错配。",
+    items: ["行业基准与最优配置对照", "利益输送与异常采购识别", "全周期董事尽职调查免责存证"],
+    color: "border-amber-500/40 text-amber-400"
+  }
+];
+
+const CAPABILITIES = [
+  {
+    title: "差异引擎",
+    desc: "管理层陈述与客观系统数据交叉碰撞，自动计算指标偏差度，输出直击痛点的量化质询清单。",
+    icon: Search
+  },
+  {
+    title: "穿透审计",
+    desc: "一键生成具备法律效力的董事会决策对照审计卷宗，为董事履职留痕与独立决策提供客观证据链。",
+    icon: FileCheck
+  },
+  {
+    title: "物理隔离",
+    desc: "单机桌面程序独立运行，内嵌离线数据库，支持完全物理断网与涉密高保密运行环境。",
+    icon: Lock
+  },
+  {
+    title: "多端同构",
+    desc: "支持企业私有化容器与物理集群部署，覆盖桌面管理端、移动设备及鸿蒙原生客户端。",
+    icon: Layers
+  }
+];
+---
+
+<Layout>
+  <!-- Executive Header -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3.5 flex items-center justify-between">
+      <!-- Logo Brand -->
+      <a href="#" class="group flex items-center space-x-3 transition-transform duration-200 hover:scale-[1.02]">
+        <div class="w-9 h-9 rounded-lg bg-primary/15 border border-primary/40 flex items-center justify-center font-bold text-primary text-sm shadow-[0_0_15px_rgba(37,99,235,0.2)] group-hover:border-primary/80 group-hover:bg-primary/25 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all duration-300">
+          DM
+        </div>
+        <div class="flex flex-col text-left">
+          <span class="font-bold tracking-wider text-white text-base group-hover:text-blue-400 transition-colors duration-200">univer-董秘</span>
+          <span class="text-[10px] text-blue-400/90 tracking-widest uppercase font-mono group-hover:text-blue-300 transition-colors duration-200">Chairman's Independent Advisory Staff</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation with Hover Effects -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm text-slate-300 font-medium">
+        <a href="#tracks" class="relative px-3.5 py-1.5 rounded-md hover:text-white hover:bg-white/[0.06] transition-all duration-200 group">
+          <span>三轨模型</span>
+          <span class="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
+        </a>
+        <a href="#gap-engine" class="relative px-3.5 py-1.5 rounded-md hover:text-white hover:bg-white/[0.06] transition-all duration-200 group">
+          <span>差异引擎</span>
+          <span class="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
+        </a>
+        <a href="#editions" class="relative px-3.5 py-1.5 rounded-md hover:text-white hover:bg-white/[0.06] transition-all duration-200 group">
+          <span>交付形态</span>
+          <span class="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
+        </a>
+        <a href="#demo" class="relative px-3.5 py-1.5 rounded-md hover:text-white hover:bg-white/[0.06] transition-all duration-200 group">
+          <span>预约演示</span>
+          <span class="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
+        </a>
+      </nav>
+
+      <!-- Desktop Action Button -->
+      <div class="hidden sm:flex items-center space-x-4">
+        <a href="#demo" class="text-xs font-semibold bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-hover hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_rgba(37,99,235,0.25)] hover:shadow-[0_0_25px_rgba(37,99,235,0.45)] flex items-center gap-1.5">
+          <PhoneCall class="w-3.5 h-3.5 text-blue-200" />
+          <span>预约私享演示</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex items-center space-x-2 md:hidden">
+        <a href="#demo" class="sm:hidden text-[11px] font-semibold bg-primary text-white px-2.5 py-1.5 rounded hover:bg-primary-hover transition-colors flex items-center gap-1">
+          <PhoneCall class="w-3 h-3 text-blue-200" />
+          <span>预约演示</span>
+        </a>
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          aria-label="切换导航菜单" 
+          aria-expanded="false"
+          class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+        >
+          <Menu id="icon-menu" class="w-6 h-6 block" />
+          <X id="icon-close" class="w-6 h-6 hidden" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer / Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#070b14]/95 backdrop-blur-xl px-6 py-5 space-y-4">
+      <nav class="flex flex-col space-y-2 text-sm font-medium text-slate-300">
+        <a href="#tracks" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg hover:text-blue-400 hover:bg-white/[0.04] transition-all duration-300 ease-out">
+          <span>三轨模型</span>
+          <ArrowRight class="w-4 h-4 text-slate-500" />
+        </a>
+        <a href="#gap-engine" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg hover:text-blue-400 hover:bg-white/[0.04] transition-all duration-300 ease-out">
+          <span>差异引擎</span>
+          <ArrowRight class="w-4 h-4 text-slate-500" />
+        </a>
+        <a href="#editions" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg hover:text-blue-400 hover:bg-white/[0.04] transition-all duration-300 ease-out">
+          <span>交付形态</span>
+          <ArrowRight class="w-4 h-4 text-slate-500" />
+        </a>
+        <a href="#demo" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg hover:text-blue-400 hover:bg-white/[0.04] transition-all duration-300 ease-out">
+          <span>预约演示</span>
+          <ArrowRight class="w-4 h-4 text-slate-500" />
+        </a>
+      </nav>
+
+      <div class="pt-4 border-t border-white/10 flex flex-col gap-2.5 text-xs">
+        <a href="#demo" class="mobile-nav-link w-full py-2.5 text-center bg-primary text-white font-semibold rounded-lg hover:bg-primary-hover active:scale-[0.98] transition-all duration-300 ease-out shadow-lg shadow-primary/25 flex items-center justify-center gap-1.5">
+          <PhoneCall class="w-3.5 h-3.5 text-blue-200" />
+          <span>预约私享演示</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconClose = document.getElementById('icon-close');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (menuBtn && mobileMenu && iconMenu && iconClose) {
+      menuBtn.addEventListener('click', () => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+        mobileMenu.classList.toggle('hidden');
+        iconMenu.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+      });
+
+      // Close menu when clicking on any mobile navigation anchor
+      navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          iconMenu.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Inbound Lead Form Submission
+    const leadForm = document.getElementById('lead-form') as HTMLFormElement | null;
+    const submitBtn = document.getElementById('lead-submit-btn') as HTMLButtonElement | null;
+    const statusMsg = document.getElementById('lead-status-msg') as HTMLDivElement | null;
+
+    if (leadForm && submitBtn && statusMsg) {
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('lead-name') as HTMLInputElement | null;
+        const phoneInput = document.getElementById('lead-phone') as HTMLInputElement | null;
+        const companyInput = document.getElementById('lead-company') as HTMLInputElement | null;
+        const demandSelect = document.getElementById('lead-demand') as HTMLSelectElement | null;
+
+        const payload = {
+          name: nameInput ? nameInput.value.trim() : '',
+          phone: phoneInput ? phoneInput.value.trim() : '',
+          company_name: companyInput ? companyInput.value.trim() : '',
+          demand: demandSelect ? demandSelect.value.trim() : '',
+          source: 'official_site',
+        };
+
+        if (!payload.name || !payload.phone || !payload.company_name) {
+          statusMsg.className = 'p-3 rounded text-xs bg-red-500/15 border border-red-500/30 text-red-300';
+          statusMsg.textContent = '请完整填写联系姓名、联系电话与企业名称。';
+          statusMsg.classList.remove('hidden');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = '正在提交预约...';
+        statusMsg.classList.add('hidden');
+
+        try {
+          const apiBase = (window as any).UNIVER_API_BASE || '';
+          const res = await fetch(`${apiBase}/api/v1/external/inbound-lead`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const result = await res.json();
+          if (res.ok && (result.code === 0 || result.code === 200)) {
+            statusMsg.className = 'p-3 rounded text-xs bg-emerald-500/15 border border-emerald-500/30 text-emerald-300';
+            statusMsg.textContent = '预约请求已成功提交！专属方案顾问将在 2 个工作小时内与您取得联系并签署保密协议。';
+            statusMsg.classList.remove('hidden');
+            leadForm.reset();
+          } else {
+            statusMsg.className = 'p-3 rounded text-xs bg-red-500/15 border border-red-500/30 text-red-300';
+            statusMsg.textContent = result.message || '提交失败，请检查填写内容或稍后重试。';
+            statusMsg.classList.remove('hidden');
+          }
+        } catch (err) {
+          statusMsg.className = 'p-3 rounded text-xs bg-red-500/15 border border-red-500/30 text-red-300';
+          statusMsg.textContent = '服务暂时繁忙，请稍后重试或通过专属通道直接联系顾问。';
+          statusMsg.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '提交预约';
+        }
+      });
+    }
+  </script>
+
+  <main class="max-w-7xl mx-auto px-6 lg:px-12 py-16 space-y-24">
+    <!-- Hero Section -->
+    <section class="text-center space-y-8 pt-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-mono">
+        <ShieldCheck class="w-3.5 h-3.5 text-blue-400" />
+        <span>让经营数据讲真话 · 专为董事长与董事会打造</span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+        董事长的独立参谋部<br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">
+          用数据替你问总经理不敢答的问题
+        </span>
+      </h1>
+
+      <p class="text-base md:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+        把公司治理中的“不信任成本”产品化。建立企业经营真实性与决策对照系统：穿透高管汇报滤镜，直连企业只读底层数据，由 AI 差异引擎度量经营偏差，赋能董事尽职免责与战略把舵。
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a href="#demo" class="px-7 py-3.5 rounded bg-primary text-white font-semibold text-sm hover:bg-primary-hover active:scale-[0.98] transition-all duration-300 ease-out flex items-center gap-2 shadow-xl shadow-primary/25">
+          <span>预约私享演示</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+        <a href="#tracks" class="px-6 py-3.5 rounded border border-white/10 glass-panel text-slate-200 font-semibold text-sm hover:border-primary/40 active:scale-[0.98] transition-all duration-300 ease-out">
+          查阅三轨决策对照模型
+        </a>
+      </div>
+
+      <!-- Key Assurance Badges -->
+      <div class="pt-6 flex flex-wrap justify-center gap-6 sm:gap-8 text-xs text-slate-400 border-t border-white/5 max-w-3xl mx-auto">
+        <div class="flex items-center gap-2">
+          <CheckCircle2 class="w-4 h-4 text-blue-400" />
+          <span>只读双签授权接入</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <CheckCircle2 class="w-4 h-4 text-blue-400" />
+          <span>零侵入与涉密物理断网</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <CheckCircle2 class="w-4 h-4 text-blue-400" />
+          <span>金蝶/用友/ERP 原生适配</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <CheckCircle2 class="w-4 h-4 text-blue-400" />
+          <span>签署高规格保密协议 (NDA)</span>
+        </div>
+      </div>
+
+      <!-- Organic Metallic Light Wave Stream (Full-Bleed Widescreen Adaptation & Enhanced Readability) -->
+      <div class="mt-16 w-screen relative left-1/2 -translate-x-1/2 text-center py-6 overflow-hidden">
+        
+        <!-- Fluid Metallic Light Ribbon Layer (Widescreen Stretch & Gentle Luminance) -->
+        <div class="relative w-full h-[220px] sm:h-[320px] 2xl:h-[400px] overflow-hidden flex items-center justify-center pointer-events-none select-none">
+          <img 
+            src="/images/metallic-lines.png" 
+            alt="" 
+            class="w-screen min-w-[1440px] 2xl:min-w-[2048px] 3xl:min-w-[2560px] max-w-none object-cover object-center h-full mix-blend-screen opacity-85 animate-metallic-drift [mask-image:radial-gradient(ellipse_75%_55%_at_50%_50%,black_30%,transparent_95%)]"
+          />
+          <!-- Subtle Soft Ambient Flare along the apex -->
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent blur-3xl pointer-events-none"></div>
+        </div>
+
+        <!-- Floating Governance Inscription Suspended Over Light Waves (High Contrast Readability) -->
+        <div class="relative -mt-36 sm:-mt-48 z-10 space-y-4 max-w-3xl mx-auto px-6 py-6 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(6,9,19,0.85)_0%,rgba(6,9,19,0.45)_60%,transparent_100%)] backdrop-blur-[1.5px]">
+          <div class="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-blue-400 uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
+            <span>[ INDEPENDENT ADVISORY AXIS · 独立治理轴 ]</span>
+          </div>
+
+          <h3 class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-wide leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+            不以主观陈述为依据 · 唯以客观系统为准绳
+          </h3>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] max-w-xl mx-auto">
+            管理事实轨（述职提报） · 系统底座轨（只读穿透） · 决策精算轨（偏差裁决）
+          </p>
+
+          <!-- Minimalist Atmospheric Ethereal Accents (Floating Without Boxes) -->
+          <div class="pt-5 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[11px] font-mono text-slate-400">
+            <span class="text-blue-300/80 hover:text-blue-200 transition-colors">[ 涉密物理断网 · 零数据出境 ]</span>
+            <span class="text-slate-600">/</span>
+            <span class="text-cyan-300/80 hover:text-cyan-200 transition-colors">[ 司法级存证 · SHA-256 哈希链 ]</span>
+            <span class="text-slate-600">/</span>
+            <span class="text-emerald-300/80 hover:text-emerald-200 transition-colors">[ 只读双签接入 · 穿透汇报滤镜 ]</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4 Key Governance Metrics Banner (Lightweight Hairline Style, No Heavy Box) -->
+      <div class="mt-14 pt-8 border-t border-white/5 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300 text-center group">
+          <div class="text-[10px] font-mono text-blue-400 mb-1">[ 01 · 偏差捕获 ]</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-blue-400 group-hover:scale-105 transition-transform">99.8%</div>
+          <div class="text-xs font-semibold text-white mt-1.5">隐匿经营偏差识别</div>
+          <div class="text-[11px] text-slate-400 mt-0.5">三轨自动交叉碰撞</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 text-center group">
+          <div class="text-[10px] font-mono text-emerald-400 mb-1">[ 02 · 数据安全 ]</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-emerald-400 group-hover:scale-105 transition-transform">0 风险</div>
+          <div class="text-xs font-semibold text-white mt-1.5">涉密物理断网隔离</div>
+          <div class="text-[11px] text-slate-400 mt-0.5">单机运行密钥不出境</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/40 hover:-translate-y-1 transition-all duration-300 text-center group">
+          <div class="text-[10px] font-mono text-blue-400 mb-1">[ 03 · 司法存证 ]</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-cyan-400 group-hover:scale-105 transition-transform">100%</div>
+          <div class="text-xs font-semibold text-white mt-1.5">董事履职免责卷宗</div>
+          <div class="text-[11px] text-slate-400 mt-0.5">全链路客观证据链</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-500/40 hover:-translate-y-1 transition-all duration-300 text-center group">
+          <div class="text-[10px] font-mono text-amber-400 mb-1">[ 04 · 部署时效 ]</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-amber-400 group-hover:scale-105 transition-transform">&lt; 2小时</div>
+          <div class="text-xs font-semibold text-white mt-1.5">免开发只读穿透</div>
+          <div class="text-[11px] text-slate-400 mt-0.5">金蝶/用友即插即用</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three-Track Model Section -->
+    <section id="tracks" class="space-y-8 relative">
+      <div class="text-center space-y-2 max-w-2xl mx-auto">
+        <div class="text-xs font-mono text-blue-400 uppercase tracking-widest">Core Architecture</div>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">三轨对照决策验证模型</h2>
+        <p class="text-sm text-slate-400">
+          摒弃单一依赖汇报材料的传统模式，通过三重独立轨道相互校验，让任何经营隐匿与逻辑断层无所遁形。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {TRACKS.map((track, idx) => (
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 sm:p-7 space-y-4 relative border flex flex-col justify-between group overflow-hidden">
+            <!-- Subtle top glow line on hover -->
+            <div class="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-blue-400/0 group-hover:via-blue-400/60 to-transparent transition-all duration-500"></div>
+
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <span class={`text-xs font-mono px-3 py-1 rounded-full bg-white/5 border ${track.color}`}>
+                  [ {track.role} · 独立校验 ]
+                </span>
+                <span class="text-[10px] font-mono text-slate-500">
+                  TRACK 0{idx + 1}
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">
+                {track.name}
+              </h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                {track.desc}
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-4 border-t border-white/5 text-xs text-slate-300">
+              {track.items.map((item) => (
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-400 group-hover:bg-cyan-400 transition-colors"></span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Metallic Ribbon Horizon Separator (Full Bleed Widescreen Adaptation) -->
+    <div class="relative w-screen left-1/2 -translate-x-1/2 h-[120px] sm:h-[180px] 2xl:h-[220px] overflow-hidden flex items-center justify-center pointer-events-none select-none my-[-30px] mix-blend-screen opacity-35 [mask-image:radial-gradient(ellipse_75%_50%_at_50%_50%,black_25%,transparent_90%)]">
+      <img 
+        src="/images/metallic-lines.png" 
+        alt="" 
+        class="w-screen min-w-[1440px] 2xl:min-w-[2048px] 3xl:min-w-[2560px] max-w-none object-cover object-center h-full select-none"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Gap Engine & Core Capabilities -->
+    <section id="gap-engine" class="space-y-8">
+      <div class="text-center space-y-2 max-w-2xl mx-auto">
+        <div class="text-xs font-mono text-blue-400 uppercase tracking-widest flex items-center justify-center gap-2">
+          <span>Intelligent Engine</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">差异引擎与董事尽职免责</h2>
+        <p class="text-sm text-slate-400">
+          用客观算力取代人际试探，以量化偏差帮助董事长在董事会上精准发问，护航企业长效经营。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {CAPABILITIES.map((cap, idx) => (
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 space-y-3.5 relative group overflow-hidden">
+            <!-- Top hover line -->
+            <div class="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-blue-400/0 group-hover:via-blue-400/60 to-transparent transition-all duration-500"></div>
+
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:border-blue-500/50 group-hover:scale-105 transition-all">
+                <cap.icon class="w-5 h-5" />
+              </div>
+              <span class="text-[10px] font-mono text-slate-500">
+                0{idx + 1}
+              </span>
+            </div>
+
+            <h3 class="text-base font-bold text-white group-hover:text-blue-300 transition-colors">
+              [ {cap.title} ]
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              {cap.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Dual-Delivery Editions -->
+    <section id="editions" class="glass-panel rounded-3xl p-8 lg:p-12 border border-white/10 space-y-8 relative overflow-hidden">
+      <!-- Subtle corner glow -->
+      <div class="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-blue-600/10 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-2xl space-y-2">
+        <div class="text-xs font-mono text-blue-400 uppercase tracking-widest flex items-center gap-2">
+          <span>Deployment Options</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">两大交付形态 · 适配不同安全级别</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4 p-6 sm:p-7 rounded-2xl bg-surface-50/60 border border-white/10 hover:border-blue-500/40 transition-all duration-300 relative group">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">单机桌面版</h3>
+            <span class="flex items-center gap-1.5 text-[10px] font-mono px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+              <span>单机物理离线</span>
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            前后端统一编译为单一 Windows 可执行程序，内嵌轻量高并发存储。无需任何外部服务器或公网连接，支持在董事长私人电脑或断网涉密机上一键双击即开即用。
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span>零数据出境，物理级防泄漏保护</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span>支持只读移动介质或加密快照导入业务凭证</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span>极其适合独立董事、控股股东私人研判</span></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4 p-6 sm:p-7 rounded-2xl bg-surface-50/60 border border-white/10 hover:border-emerald-500/40 transition-all duration-300 relative group">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">企业私有云</h3>
+            <span class="flex items-center gap-1.5 text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>集群实时协同</span>
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            部署于企业自建机房或专属私有云 VPC。集中式多职能高管协同平台，支持自动化邮件周报定时分发，配套 Web PC 控制台与移动/鸿蒙端实时看板。
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span>统一对接金蝶云、用友 NCC/BIP 实时 API 管道</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span>多角色权限细粒度隔离（董事长/董秘/审计委员）</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span>鸿蒙 ArkTS 与 Android 原生移动端多端同步</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Book a Demo Form -->
+    <section id="demo" class="max-w-2xl mx-auto glass-panel rounded-2xl p-8 lg:p-10 border border-blue-500/30 shadow-2xl space-y-6">
+      <div class="text-center space-y-2">
+        <h2 class="text-2xl font-bold text-white tracking-tight">预约一对一私享演示</h2>
+        <p class="text-xs text-slate-400">
+          请填写您的企业基本信息，我们将在 2 个工作小时内由专属资深方案顾问与您取得联系并签署保密协议。
+        </p>
+      </div>
+
+      <form id="lead-form" class="space-y-4 text-xs">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label for="lead-name" class="text-slate-300 font-medium">联系姓名</label>
+            <input 
+              id="lead-name"
+              name="name"
+              type="text" 
+              required 
+              maxlength="16"
+              placeholder="张建国" 
+              class="w-full bg-surface-100 border border-white/10 rounded px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus:border-primary transition-all duration-300 ease-out" 
+            />
+          </div>
+          <div class="space-y-1.5">
+            <label for="lead-phone" class="text-slate-300 font-medium">联系电话</label>
+            <input 
+              id="lead-phone"
+              name="phone"
+              type="tel" 
+              required 
+              maxlength="16"
+              placeholder="13800138000" 
+              class="w-full bg-surface-100 border border-white/10 rounded px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus:border-primary transition-all duration-300 ease-out" 
+            />
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <label for="lead-company" class="text-slate-300 font-medium">企业名称</label>
+          <input 
+            id="lead-company"
+            name="company_name"
+            type="text" 
+            required 
+            maxlength="32"
+            placeholder="某某控股集团有限公司" 
+            class="w-full bg-surface-100 border border-white/10 rounded px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus:border-primary transition-all duration-300 ease-out" 
+          />
+        </div>
+
+        <div class="space-y-1.5">
+          <label for="lead-demand" class="text-slate-300 font-medium">验证诉求</label>
+          <select id="lead-demand" name="demand" class="w-full bg-surface-100 border border-white/10 rounded px-3 py-2 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus:border-primary transition-all duration-300 ease-out">
+            <option>经营真实性交叉核验与差异发现</option>
+            <option>ERP/CRM 数据穿透与高管汇报对照</option>
+            <option>董事尽职免责存证与审计底稿生成</option>
+            <option>涉密环境独立桌面版离线试用</option>
+          </select>
+        </div>
+
+        <!-- 状态提示容器 -->
+        <div id="lead-status-msg" class="hidden p-3 rounded text-xs transition-all duration-300"></div>
+
+        <button id="lead-submit-btn" type="submit" class="w-full py-3 rounded bg-primary text-white font-bold hover:bg-primary-hover active:scale-[0.98] transition-all duration-300 ease-out shadow-lg shadow-primary/20 disabled:opacity-60 disabled:cursor-not-allowed">
+          提交预约
+        </button>
+
+        <p class="text-[11px] text-center text-slate-500">
+          严格遵循最高商业机密保护原则，未经许可绝不向任何第三方透露您的咨询记录。
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Executive Footer -->
+  <footer class="border-t border-white/5 glass-panel mt-20 py-8 px-6 lg:px-12 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="font-bold text-slate-300">univer-董秘</span>
+        <span>- 董事长独立决策参谋部与治理差异引擎</span>
+      </div>
+      <div class="flex items-center space-x-6 text-[11px]">
+        <span>网腾科技 (WangTeng Tech)</span>
+        <span>univerOS 核心生态产品</span>
+        <span>私网专属域名: univerdm.internal</span>
+      </div>
+    </div>
+  </footer>
+</Layout>

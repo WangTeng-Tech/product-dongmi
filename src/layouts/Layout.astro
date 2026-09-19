@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "univer-董秘 (univerDM) | 董事长的独立参谋部——用数据替你问总经理不敢答的问题",
+  description = "把公司治理中的不信任成本产品化。建立企业经营真实性与决策对照系统：管理轨（述职报告） vs 现实轨（ERP/CRM 双签只读数据） vs AI 轨最优解，差异引擎自动度量偏差并暴露经营风险。",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen relative executive-grid bg-[#060913] text-slate-200">
+    <div class="fixed inset-0 glow-ambient pointer-events-none -z-20"></div>
+
+    <!-- Widescreen Metallic Light Ribbons (Global Flowing Light Lines with Widescreen Adaptation) -->
+    <div class="fixed top-[6%] inset-x-0 h-[480px] 2xl:h-[580px] pointer-events-none -z-10 overflow-hidden flex items-center justify-center mix-blend-screen animate-metallic-drift [mask-image:radial-gradient(ellipse_75%_55%_at_50%_50%,black_25%,transparent_95%)]">
+      <img 
+        src="/images/metallic-lines.png" 
+        alt="" 
+        class="w-screen min-w-[1440px] 2xl:min-w-[2048px] 3xl:min-w-[2560px] max-w-none object-cover object-center h-full select-none"
+        loading="eager"
+      />
+    </div>
+    <div class="fixed top-[50%] inset-x-0 h-[400px] 2xl:h-[500px] pointer-events-none -z-10 overflow-hidden flex items-center justify-center mix-blend-screen scale-y-[-1] animate-metallic-drift [mask-image:radial-gradient(ellipse_70%_50%_at_50%_50%,black_20%,transparent_90%)]" style="animation-delay: 6s;">
+      <img 
+        src="/images/metallic-lines.png" 
+        alt="" 
+        class="w-screen min-w-[1440px] 2xl:min-w-[2048px] 3xl:min-w-[2560px] max-w-none object-cover object-center h-full select-none"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Ethereal Breathing Spheres -->
+    <div class="fixed top-[-10%] right-[15%] w-[500px] h-[400px] rounded-full bg-blue-600/[0.07] blur-[120px] pointer-events-none -z-20 animate-pulse-soft"></div>
+    <div class="fixed top-[35%] left-[-10%] w-[550px] h-[450px] rounded-full bg-indigo-600/[0.05] blur-[130px] pointer-events-none -z-20 animate-pulse-soft" style="animation-delay: 2s;"></div>
+    <div class="fixed bottom-[-10%] right-[20%] w-[600px] h-[450px] rounded-full bg-blue-500/[0.06] blur-[140px] pointer-events-none -z-20 animate-pulse-soft" style="animation-delay: 1s;"></div>
+    <slot />
+  </body>
+</html>
